@@ -35,11 +35,12 @@ export class BsCustomDatesViewComponent {
 
   compareRanges(range?: BsCustomDates) {
     const currentRange = range?.value;
-    if (Array.isArray(currentRange) && Array.isArray(this.selectedRange)) {
-      return new Date(currentRange[0]).setHours(0, 0, 0, 0) === new Date(this.selectedRange[0]).setHours(0, 0, 0, 0) 
-      && new Date(currentRange[1]).setHours(0, 0, 0, 0) === new Date(this.selectedRange[1]).setHours(0, 0, 0, 0);    
+    const selectedRange = this.selectedRange;
+    if (Array.isArray(currentRange) && Array.isArray(selectedRange)) {
+      return new Date(currentRange[0]).setHours(0, 0, 0, 0) === new Date(selectedRange[0]).setHours(0, 0, 0, 0)
+      && new Date(currentRange[1]).setHours(0, 0, 0, 0) === new Date(selectedRange[1]).setHours(0, 0, 0, 0);
     }
 
-    return JSON.stringify(range?.value) === JSON.stringify(this.selectedRange);
+    return JSON.stringify(currentRange) === JSON.stringify(selectedRange);
   }
 }
